@@ -1,0 +1,8 @@
+<appender name="STATISTICS-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+        <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}|%X{Log-ID}|%X{requestPath}|%X{requestParams}|%X{startTime}|%X{endTime}|%X{executeTime}|%X{responseStatus}|%X{exception}|%X{extApiPath}|%X{extApiExecuteTime}|%X{extApiStatus}|%X{currentUser}|%X{X-Correlation-ID}||||||||||||||||%X{X-App-Version}|%X{X-App-Name}|%X{X-Device-ID}|%X{X-Device-IMEI}|%X{X-Device-MAC-Address}|%X{X-Device-Vendor}|%X{X-Device-Model}|%X{X-Location-Latitude}|%X{X-Location-Longitude}||||||||||||||||%n</Pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <fileNamePattern>${basedir}/BootstrapApplicationStatsLog_%d{yyyyMMdd_HH}_${hostName}.log</fileNamePattern>
+    </rollingPolicy>
+</appender>

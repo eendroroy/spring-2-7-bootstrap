@@ -1,0 +1,8 @@
+<appender name="CATALINA-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+        <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{X-Correlation-ID}] %logger{1000}.%M:%L - %msg%n</Pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <fileNamePattern>${basedir}/BootstrapApplicationCatalinaLog_%d{yyyyMMdd_HH}_${hostName}.log</fileNamePattern>
+    </rollingPolicy>
+</appender>

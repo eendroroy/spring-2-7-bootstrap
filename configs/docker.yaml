@@ -1,0 +1,76 @@
+spring:
+  main:
+    banner-mode: ${SPRING_BANNER_MODE:off}
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE}
+  datasource:
+    url: ${SPRING_DATASOURCE_URI}
+    username: ${SPRING_DATASOURCE_USER}
+    password: ${SPRING_DATASOURCE_PASS}
+    hikari:
+      max-lifetime: ${HIKARI_MAX_LIFETIME:600000}
+      connectionTimeout: ${HIKARI_CONNECTION_TIMEOUT:5000}
+      maximumPoolSize: ${HIKARI_MAX_POOL_SIZE:50}
+      minimumIdle: ${HIKARI_MIN_IDLE:5}
+      idleTimeout: ${HIKARI_IDLE_TIMEOUT:30000}
+      leak-detection-threshold: ${HIKARI_LEAK_DETECTION_THRESHOLD:120000}
+      test-while-idle: ${HIKARI_TEST_WHILE_IDLE:true}
+      test-on-borrow: ${HIKARI_TEST_ON_BORROW:true}
+  jpa:
+    database-platform: ${DATABASE_DIALECT:org.hibernate.dialect.SQLServer2012Dialect}
+    open-in-view: ${HIBERNATE_OSIV:false}
+    hibernate:
+      ddl-auto: ${HIBERNATE_DDL_AUTO:none}
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: ${HIBERNATE_BATCH_SIZE:350}
+        order_inserts: ${HIBERNATE_ORDER_INSERTS:true}
+        order_updates: ${HIBERNATE_ORDER_UPDATES:true}
+        batch_versioned_data: $HIBERNATE_BATCH_VERSION_DATA:true}
+        generate_statistics: ${HIBERNATE_STATS:false}
+        show_sql: ${HIBERNATE_SHOW_SQL:false}
+        format_sql: ${HIBERNATE_FORMAT_SQL:false}
+
+server:
+  host: ${SERVER_HOST}
+  port: ${SERVER_PORT}
+  tomcat:
+    threads:
+      max: ${TOMCAT_MAX_THREADS:300}
+    basedir: ${TOMCAT_BASE_DIR}
+  servlet:
+    encoding:
+      charset: ${SERVLET_ENCODING:UTF-8}
+      force: ${SERVLET_FORCE_ENCODING:true}
+  shutdown: ${SPRING_BOOT_SHUTDOWN_MODE:graceful}
+
+logging:
+  level:
+    root: ${LOGGING_LEVEL:INFO}
+    org:
+      hibernate:
+        SQL: ${SQL_LOGGING_LEVEL:INFO}
+        type:
+          descriptor:
+            sql:
+              BasicBinder: ${SQL_BASIC_BINDER_LOGGING_LEVEL:INFO}
+      springframework:
+        jdbc:
+          core:
+            JdbcTemplate: ${JDBC_TEMPLATE_LOGGING_LEVEL:INFO}
+    com:
+      zaxxer:
+        hikari:
+          HikariConfig: ${HCP_CONFIG_LOGGING_LEVEL:INFO}
+          pool:
+            HikariPool: ${HCP_LOGGING_LEVEL:INFO}
+
+management:
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    metrics:
+      enabled: true
+      show-details: always
